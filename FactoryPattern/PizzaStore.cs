@@ -8,8 +8,19 @@ namespace FactoryPattern
 {
     public abstract class PizzaStore
     {
+        protected abstract Pizza createPizza(String item);
 
-        public Pizza orderPizza(string type)
+        public Pizza orderPizza(String type)
+        {
+            Pizza pizza = createPizza(type);
+            Console.WriteLine("--- Making a " + pizza.getName() + " ---");
+            pizza.prepare();
+            pizza.bake();
+            pizza.cut();
+            pizza.box();
+            return pizza;
+        }
+        /*public Pizza orderPizza(string type)
         {
             Pizza pizza;
 
@@ -20,9 +31,11 @@ namespace FactoryPattern
             pizza.cut();
             pizza.box();
 
-            return pizza;
-        }
 
-        internal abstract Pizza createPizza(string type);
+
+            return pizza;
+        }*/
+
+        //internal abstract Pizza createPizza(string type);
     }
 }

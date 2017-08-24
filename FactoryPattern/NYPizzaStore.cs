@@ -8,7 +8,36 @@ namespace FactoryPattern
 {
     public class NYPizzaStore : PizzaStore
     {
-        internal override Pizza createPizza(string item)
+        protected override Pizza createPizza(string item)
+        {
+            Pizza pizza = null;
+            PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
+
+            if (item.Equals("cheese"))
+            {
+                pizza = new CheesePizza(ingredientFactory);
+                pizza.setName("New York Style Cheese Pizza");
+            }
+
+            else if (item.Equals("veggie"))
+            {
+                pizza = new VeggiePizza(ingredientFactory);
+                pizza.setName("New York Style Veggie Pizza");
+            }
+
+            else if (item.Equals("clam"))
+            {
+                pizza = new ClamPizza(ingredientFactory);
+                pizza.setName("New York Style Clam Pizza");
+            }
+
+            return pizza;
+        }
+
+
+
+
+        /*internal override Pizza createPizza(string item)
         {
             if (item.Equals("cheese"))
             {
@@ -30,6 +59,6 @@ namespace FactoryPattern
             {
                 return null;
             }
-        }
+        }*/
     }
 }

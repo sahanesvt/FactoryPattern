@@ -9,14 +9,20 @@ namespace FactoryPattern
     public abstract class Pizza
     {
         internal string name;
-        internal string dough;
+        /*internal string dough;
         internal string sauce;
-        internal List<string> toppings = new List<string>();
+        internal List<string> toppings = new List<string>();*/
+        protected Dough dough;
+        protected Sauce sauce;
+        protected Veggies[] veggies;
+        protected Cheese cheese;
+        protected Pepperoni pepperoni;
+        protected Clams clam;
 
 
 
-        internal void prepare()
-        {
+        public abstract void prepare();
+        /*{
             Console.WriteLine("Preparing " + name);
             Console.WriteLine("Tossing dough...");
             Console.WriteLine("Adding sauce...");
@@ -25,7 +31,7 @@ namespace FactoryPattern
             {
                 Console.WriteLine("   " + topping);
             }
-        }
+        }*/
 
         internal void bake()
         {
@@ -42,9 +48,16 @@ namespace FactoryPattern
             Console.WriteLine("Place pizza in official PizzaStore box");
         }
 
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
         public string getName()
         {
             return name;
         }
+
+        public string toString() { return ""; }
     }
 }
